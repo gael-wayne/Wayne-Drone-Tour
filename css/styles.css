@@ -22,6 +22,37 @@ label {
     box-shadow: 0px 4px 4px yellow;
     margin-bottom: 35px;
 }
+h8
+{
+    font-size: 1.5em;
+    font-weight: normal;
+    margin: 0 0 0 10px;
+    text-shadow: 4px 4px 4px red;
+	box-shadow: 6px 6px 6px white;
+	display: flex;
+    flex-direction: space-around;
+}
+nav ul
+{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+nav a
+{
+    font-size: 1.3em;
+    color: #19FFAA;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+nav a:hover
+{
+    color: yellow;
+    border-bottom: 3px solid #760001;
+}
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
