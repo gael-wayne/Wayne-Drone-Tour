@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wayne Drone Tour</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#d8e2ff",
+                    "surface-bright": "#3a393a",
+                    "on-tertiary-fixed": "#002022",
+                    "surface-container-low": "#1c1b1c",
+                    "secondary-container": "#ff8a00",
+                    "surface": "#131314",
+                    "on-surface-variant": "#c1c6d7",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed-dim": "#adc6ff",
+                    "background": "#131314",
+                    "surface-container-lowest": "#0e0e0f",
+                    "inverse-on-surface": "#313031",
+                    "surface-variant": "#353436",
+                    "secondary-fixed": "#ffdcc4",
+                    "outline-variant": "#414755",
+                    "on-secondary-fixed-variant": "#6f3900",
+                    "on-primary-container": "#00285c",
+                    "surface-container-highest": "#353436",
+                    "on-secondary-fixed": "#2f1500",
+                    "on-tertiary": "#00363a",
+                    "on-background": "#e5e2e3",
+                    "inverse-surface": "#e5e2e3",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "primary": "#adc6ff",
+                    "on-secondary": "#4e2600",
+                    "surface-dim": "#131314",
+                    "primary-container": "#4b8eff",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "outline": "#8b90a0",
+                    "surface-tint": "#adc6ff",
+                    "on-primary": "#002e69",
+                    "surface-container": "#201f20",
+                    "surface-container-high": "#2a2a2b",
+                    "tertiary": "#00dbe9",
+                    "secondary": "#ffb77f",
+                    "on-primary-fixed": "#001a41",
+                    "on-error": "#690005",
+                    "on-secondary-container": "#613100",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#7df4ff",
+                    "inverse-primary": "#005bc1",
+                    "tertiary-container": "#00a0aa",
+                    "secondary-fixed-dim": "#ffb77f",
+                    "on-surface": "#e5e2e3",
+                    "on-primary-fixed-variant": "#004493",
+                    "on-tertiary-container": "#002f33"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "margin-desktop": "80px",
+                    "container-max": "1280px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card:hover {
+            border-color: rgba(173, 198, 255, 0.3);
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.1);
+        }
+        .bloom-primary:hover {
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.5);
+        }
+        .bloom-secondary {
+            box-shadow: 0 0 10px rgba(255, 183, 127, 0.4);
+        }
+        body {
+            background-color: #131314;
+            color: #e5e2e3;
+            overflow-x: hidden;
+        }
+        .hud-accent {
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10">
+<div class="flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+
+<span class="text-label-md font-label-md tracking-widest text-primary dark:text-primary">Wayne Drone Tour</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-primary dark:text-primary font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="index.html">Accueil</a>
+<a class="text-on-surface dark:text-on-surface font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="drone.html">Mes drones</a>
+<a class="text-on-surface dark:text-on-surface font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="vr.html">Mode VR</a>
+<a class="text-on-surface dark:text-on-surface font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="normal.html">Montage vidéo</a>
+<a class="text-on-surface dark:text-on-surface font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="mailto:waynetv84@gmail.com">Contact</a>
+</nav>
+<a class="px-6 py-2 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg active:scale-95 transition-transform bloom-secondary" href="https://form.jotform.com/250962401395356">
+                Demande de prestation
+            </a>
+</div>
+</header>
+<!-- Hero Section -->
+<main class="pt-24 min-h-screen">
+<section class="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center px-gutter overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
+<img alt="Cinematic Drone Flight over Saint-Tropez" class="w-full h-full object-cover scale-105 animate-[pulse_8s_infinite_alternate]" src="https://lh3.googleusercontent.com/aida/AP1WRLtkNRxPN42nsX3ONmhlENzvW01Gfk0mRHyw-bw8VEZ9yivV2o7s5DvWYq9zFMUb4UJY1o86WUUp72fAxzY5LAknp4qLnd9MZ9xRSb_07yn4cE0MnU9TyhvMqvcfg5-UyhDLf2_AfKw3zxCfeRUXE2fEefD1IrGb21uRMyQGVesfRsarO1iTHxSuSjPjV_lDMBXo703PnuWFYi_kS_rM8PvZue0HXQ-FTI1XaU81n7gvypCPOOkIfipnWzkp"/>
+</div>
+<div class="relative z-20 text-center max-w-3xl">
+<div class="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="hud-accent text-label-sm font-label-sm text-primary">Live Flight Ops</span>
+</div>
+<h1 class="text-headline-xl font-headline-xl mb-6 tracking-tight">WAYNE DRONE TOUR</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">
+                    Cinématographie aérienne de haute précision et expériences immersives en réalité virtuelle.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+
+</div>
+</div>
+<!-- HUD Details -->
+<div class="absolute bottom-12 left-gutter hidden lg:block text-outline/40">
+<div class="text-label-sm font-label-sm flex flex-col gap-1">
+</div>
+</div>
+</section>
+<section class="page-section clearfix">
+            <div class="container">
+                
+                
+                    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper">
+                            <ul id="myUL">
+                                <section class="search">
+                                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Recherche lieu..">
+                                <<iframe width="560" height="315" src="https://www.youtube.com/embed/zv45TcXnPpw?si=CmgCbrLTbPsNp-Mu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>Sainte Victoire<iframe width="560" height="315" src="https://www.youtube.com/embed/znXhQ_-g_EM?si=gg8QhaizmjmvrhQE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>Bastide du Jas de Bouffan<iframe width="560" height="315" src="https://www.youtube.com/embed/bhn7lbmCwEQ?si=oraNPZiFqNBjdTqU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>Cours de l'hotel de ville
+</div>
+  
+
+                            </span>
+                            
+                        </h2>
+                        <p class="mb-3"><body>
+
+         <section class="page-section clearfix">
+            <div class="container">
+               
+                    <div class="intro-text left-0 text-center bg-faded p-15 rounded">
+                        
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/5">
+<div class="w-full py-margin-desktop px-gutter flex flex-col md:flex-row justify-between items-start gap-8 max-w-container-max mx-auto">
+<div class="max-w-md">
+<div class="flex items-center gap-3 mb-6">
+
+<span class="text-headline-lg font-headline-lg text-primary">WAYNE DRONE TOUR</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6">
+                    Solutions de captation aérienne professionnelle. Spécialiste FPV et réalisation cinématographique de haute qualité.
+                </p>
+<p class="text-label-sm font-label-sm text-outline">© 2026 WAYNE DRONE TOUR. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="grid grid-cols-2 gap-12">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-4">Naviguer</h4>
+<ul class="flex flex-col gap-3">
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-tertiary transition-colors" href="index.html">Accueil</a></li>
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-tertiary transition-colors" href="vr.html">VR</a></li>
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-tertiary transition-colors" href="normal.html">montage</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-4 pb-safe bg-surface/90 dark:bg-surface/90 backdrop-blur-2xl border-t border-white/10 z-50 md:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline active:scale-90 transition-all hover:text-primary-fixed" href="#services">
+<span class="material-symbols-outlined">visibility</span>
+<span class="text-label-sm font-label-sm">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline active:scale-90 transition-all hover:text-primary-fixed" href="drone.html">
+<span class="material-symbols-outlined">flight</span>
+<span class="text-label-sm font-label-sm">Fleet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline active:scale-90 transition-all hover:text-primary-fixed" href="https://form.jotform.com/250962401395356">
+<span class="material-symbols-outlined">mail</span>
+<span class="text-label-sm font-label-sm">Contact</span>
+</a>
+</nav>
+<style>
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+    </style>
+<script>
+        // Subtle Mouse parallax for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+            });
+        });
+
+        // Sticky Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+    </script>
+</body></html>
